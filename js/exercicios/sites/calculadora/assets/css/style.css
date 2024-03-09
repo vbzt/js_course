@@ -1,0 +1,73 @@
+/* imports */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* imports */
+
+* {
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  font-style: normal;
+  font-family: "Poppins";
+  margin: 0;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  border: 0;
+  color: var(--corTexto);
+}
+
+/* root */
+:root {
+  --corTexto: #fff;
+  --corFundo: #111;
+  --colorido: #6373cd;
+}
+/* root */
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--corFundo);
+  height: 100%;
+  width: 100%;
+}
+
+.calculator {
+  width: 30%;
+  height: 50%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--colorido);
+  gap: 2rem;
+  border-radius: 7px;
+}
+
+.display input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  color: var(--corFundo);
+  font-weight: 600;
+  text-align: end;
+}
+
+.calc-grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.calc-grid button {
+  color: var(--corFundo);
+  text-align: center;
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: var(--corTexto);
+  cursor: pointer;
+}
