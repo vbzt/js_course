@@ -1,0 +1,11 @@
+body{
+  background-color: #111;
+}
+
+h1, h2{
+  color: #fff;
+}
+
+p, footer, nav, a{
+  color: #e4e4e4;
+}

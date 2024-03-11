@@ -1,0 +1,14 @@
+<h1>Ola handlebars</h1>
+<p>O usuario {{user.name}} {{user.surname}} tem {{user.age}} anos</p>
+
+{{#if auth}}
+<p>Ir para a <a href="/dashboard">dashboard</a></p>
+{{/if}}
+
+{{#if approved}}
+<p>O seu usuario ja esta aprovado!</p>
+{{else}}
+<p>O seu usuario ainda nao esta aprovado! Peça para um superior aprova-lo</p>
+{{/if}}
+
+
