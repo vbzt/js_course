@@ -16,7 +16,23 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 
-app.post('/books/insertbooks', (req, res) =>  {})
+app.post('/books/insertbook', (req, res) => {
+
+  const title = req.body.title
+  const pagesqnt = req.body.pagesqnt
+
+  const query = `INSERT INTO books (title, pagesqnt) VALUES ('${title}', '${pagesqnt}')`
+
+  conn.query(query, (err) =>{
+    if(err){
+      console.log(err)
+      return
+    }
+
+    res.redirect('/')
+  })
+  
+})
 
 app.get('/', (req, res) =>{
   res.render('home')

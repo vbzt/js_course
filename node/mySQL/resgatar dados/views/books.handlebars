@@ -1,0 +1,11 @@
+<h1>Livros disponiveis:</h1>
+
+<div class="books-container">
+{{#each books}}
+  <div>
+    <h3>
+      <span class="bold">{{this.title}}</span> - {{this.pagesqnt}} paginas
+    </h3>
+  </div>
+{{/each}}
+</div>
