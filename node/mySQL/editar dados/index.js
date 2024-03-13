@@ -1,4 +1,4 @@
-const express = require('express')
+                                                                      const express = require('express')
 const exphbs = require('express-handlebars')
 const mysql = require('mysql')
 
@@ -90,7 +90,24 @@ app.get('/books/edit/:id', (req, res) =>{
   })
 })
 
-app.post()
+app.post('/books/updatebook', (req, res) =>{
+
+  const id = req.body.id
+  const title = req.body.title
+  const pagesqnt = req.body.pagesqnt
+
+  const sql = `UPDATE books SET title = '${title}', pagesqnt = ${pagesqnt} WHERE id = ${id}`
+
+  conn.query(sql, (err) => { 
+    if(err){
+      console.log(err)
+      return
+    }
+
+    res.redirect('/books')
+
+  } )
+})
 
 const conn = mysql.createConnection({
   host: 'localhost',

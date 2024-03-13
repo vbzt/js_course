@@ -93,3 +93,12 @@ input{
 .books-container div{ 
   border-bottom: 1px solid var(--corTexto);
 }
+
+h3{
+  padding: 0.6rem 0.1rem;
+  font-weight: 500;
+}
+
+.bold{
+  font-weight: 600;
+}
