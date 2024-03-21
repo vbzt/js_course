@@ -1,105 +1,154 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
-const conn = require('./db/conn')
-
-const User = require('./models/User')
-const Adress = require('./models/Adress')
 
 const app = express()
 
-app.use(express.urlencoded({
-  extended: true
-}))
+const conn = require('./db/conn')
 
-app.use(express.json())
+const User = require('./models/User')
+const Address = require('./models/Address')
 
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
 
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+)
+
+app.use(express.json())
+
 app.use(express.static('public'))
 
+app.get('/', function (req, res) {
+  User.findAll({ raw: true })
+    .then((users) => {
+      console.log(users)
+      res.render('home', { users: users })
+    })
+    .catch((err) => console.log(err))
+})
 
-app.get('/users/create', (req, res) => { 
+app.get('/users/create', function (req, res) {
   res.render('adduser')
 })
 
-app.post('/users/create', async (req, res) => { 
-  
-  const name = req.body.name 
-  const occupation = req.body.occupation 
-  let newsletter = req.body.newsletter === "on" ? true : false
-  
+app.post('/users/create', function (req, res) {
+  const name = req.body.name
+  const occupation = req.body.occupation
+  let newsletter = req.body.newsletter
 
-  await User.create({name, occupation, newsletter})
-  console.log('>> user criado com nome de ' + name)
+  if (newsletter === 'on') {
+    newsletter = true
+  }
 
-  res.redirect('/')
+  User.create({ name, occupation, newsletter })
+    .then(res.redirect('/'))
+    .catch((err) => console.log(err))
 })
 
-
-app.get('/users/:id', async (req, res) => { 
+app.get('/users/:id', function (req, res) {
   const id = req.params.id
-  const user = await User.findOne({raw: true, where: {id: id}})
 
-  res.render('user', { user })
+  User.findOne({
+    raw: true,
+    where: {
+      id: id,
+    },
+  })
+    .then((user) => {
+      console.log(user)
+      res.render('userview', { user })
+    })
+    .catch((err) => console.log(err))
 })
 
-
-app.post('/users/delete/:id', async (req, res) => {
-
+app.post('/users/delete/:id', function (req, res) {
   const id = req.params.id
-  await User.destroy({where: {id: id}})
 
-  res.redirect('/')
+  User.destroy({
+    where: {
+      id: id,
+    },
+  })
+    .then((user) => {
+      res.redirect('/')
+    })
+    .catch((err) => console.log(err))
 })
 
-app.get('/users/edit/:id', async (req, res) => {
-
+app.get('/users/edit/:id', function (req, res) {
   const id = req.params.id
-  const user = await User.findOne({raw: true, where: {id: id}})
 
-  res.render('useredit', {user})
+  User.findOne({
+    include: Address,
+    where: {
+      id: id,
+    },
+  })
+    .then((user) => {
+      res.render('useredit', { user: user.get({ plain: true }) })
+    })
+    .catch((err) => console.log(err))
 })
 
-app.post('/users/update', async (req, res) => { 
-
+app.post('/users/update', function (req, res) {
   const id = req.body.id
   const name = req.body.name
   const occupation = req.body.occupation
-  let newsletter = req.body.newsletter === "on" ? true : false
+  let newsletter = req.body.newsletter
 
-  const newUser = { id, name, occupation, newsletter }
+  if (newsletter === 'on') {
+    newsletter = true
+  } else {
+    newsletter = false
+  }
 
-  await User.update(newUser, {where: {id:id}})
+  const userData = {
+    id,
+    name,
+    occupation,
+    newsletter,
+  }
 
-  res.redirect('/')
+  console.log(req.body)
+  console.log(userData)
+
+  User.update(userData, {
+    where: {
+      id: id,
+    },
+  })
+    .then((user) => {
+      console.log(user)
+      res.redirect('/')
+    })
+    .catch((err) => console.log(err))
 })
 
-app.post('/adress/create', async (req, res) => { 
-
+app.post('/address/create', function (req, res) {
   const UserId = req.body.UserId
-  const street = req.body.street 
-  const number = req.body.number 
+  const street = req.body.street
+  const number = req.body.number
   const city = req.body.city
 
-  const newAdress = { UserId, street, number, city }
+  const address = {
+    street,
+    number,
+    city,
+    UserId,
+  }
 
-  await Adress.create(newAdress)
-
-  res.redirect(`/users/edit/${UserId}`)
+  Address.create(address)
+    .then(res.redirect(`/users/edit/${UserId}`))
+    .catch((err) => console.log(err))
 })
 
-
-app.get('/', async (req, res) =>{
-  const user = await User.findAll({raw: true})
-  res.render('home', {users: user}) 
-})
-
+// Criar tabelas e rodar o app
 conn
-.sync()
-//.sync({ force: true })
-.then(
-  app.listen(3002, () =>{
-  console.log('>> db ok') 
-  console.log('>> server on')
-})).catch((e) => console.log('err during sync'))
+  .sync()
+  .then(() => {
+    app.listen(3002)
+  })
+  .catch((err) => console.log(err))

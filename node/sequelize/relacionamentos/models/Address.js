@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize')
 
 const User = require('./User')
 
-const Adress = db.define('Adress', {
+const Address = db.define('Adress', {
 
   street: {
     type: DataTypes.STRING,
@@ -20,8 +20,8 @@ const Adress = db.define('Adress', {
 
 })
 
+User.hasMany(Address)
+Address.belongsTo(User)
 
-Adress.belongsTo(User)
 
-
-module.exports = Adress
+module.exports = Address
