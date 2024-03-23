@@ -1,0 +1,165 @@
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* imports */
+
+/* scroll */
+::-webkit-scrollbar-thumb {
+  background-color: var(--colorido);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--corFundo);
+}
+/* scroll */
+
+/* pre definicao padrao */
+* {
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  font-style: normal;
+  font-family: 'Poppins';
+  margin: 0;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  resize: none;
+  outline: none;
+  border: 0;
+  color: var(--corTexto);
+  scroll-behavior: smooth;
+}
+/* pre definicao padrao */
+
+/* root */
+:root {
+  --corTexto: #fff;
+  --corFundo: #111;
+  --colorido: #6373cd;
+}
+/* root */
+
+body{
+  height: 100vh;
+  width: 100%;
+  background-color: var(--corFundo);
+}
+
+#navbar {
+  border-bottom: 1px solid #ccc;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+#navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+#navbar ul li {
+  margin-left: 1em;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.form {
+  width: 450px;
+  margin: 0 auto;
+  margin-bottom: .8em;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5em;
+}
+
+.form-checkbox {
+  flex-direction: row;
+}
+
+.form-checkbox input {
+  margin-right: 10px;
+}
+
+.form-control label {
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+.form-control input {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.userEditForm{
+  border-bottom: 1px solid #333;
+  margin-bottom: 3em;
+}
+
+
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.container .item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  flex: 1 1 29%;
+  max-width: 29%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.item h2, .item p{ 
+  margin-bottom: 0.8em;
+}
+
+.actions{ 
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions a,
+.actions input{ 
+  border: 1px solid #ccc;
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.address-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.address-list div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+.address-list div form input{ 
+  background-color: #333;
+}
