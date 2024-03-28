@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+* {
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  font-style: normal;
+  font-family: 'Rubik';
+  margin: 0;
+  transition: all 0.15s ease-in-out;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  resize: none;
+  color: var(--corTexto);
+  outline: none;
+  border: 0;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --corTexto: #e4e4e4;
+  --corCinza: #8d8d8d;
+  --corFundo: #272e53;
+  --colorido: #111;
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  padding: 1cqw 3cqw;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+nav ul{
+  display: flex;
+  gap: 3cqw;
+}
+
+nav ul li{
+  font-size: 1.8cqh;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  background-color: var(--corFundo);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5%;
+}
+
+form{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 2cqh;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.form-control label {
+  font-size: 2.1vh;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+.form-control input, .form-control textarea{
+  background-color: transparent;
+  font-size: 1.6vh;
+  border: 1px solid var(--corCinza);
+  border-radius: 5px;
+  padding: 1.4cqh;
+}
+
+.form-control input:focus, .form-control textarea:focus{
+  border: 1px solid var(--corTexto)
+}
+
+.form-control .btn-submit:hover{ 
+  border: 1px solid var(--corTexto);
+  background-color: var(--corTexto);
+  color: var(--corFundo);
+  font-weight: 600;
+}
+
+.form-control .btn-submit{
+  cursor: pointer;
+  border: 1px solid var(--corCinza);
+  background-color: transparent;
+  color: var(--corTexto);
+  font-weight: 600;
+}
+
+.taskList{
+  display: flex;
+  align-items: center;
+  gap: 3cqh;
+  padding: 0;
+  width: 25%;
+  flex-direction: column;
+}
+
+.taskList li{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1cqh 0;
+  color: var(--corTexto);
+  border-bottom: 1px solid var(--corTexto);
+}
+
+.taskList .title{
+  color: inherit;
+  font-size: 2cqh;
+}
+
+.taskList li:hover {
+  color: var(--corCinza);
+  border-bottom: 1px solid var(--corCinza);
+  font-size: 2cqh;
+}
+
+.taskList .actions{
+  display: flex;
+  gap: 1.2cqh;
+}
+
+.taskList i{
+  color: inherit;
+  font-size: 2cqh;
+}
+
+.taskList button{
+  background-color: transparent;
+  cursor: pointer;
+}

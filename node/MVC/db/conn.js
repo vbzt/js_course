@@ -11,7 +11,13 @@ const sequelize = new Sequelize({
   // dialectModule: 'pg'
 })
 
+try{
+  sequelize.authenticate()
+  console.log('>> db ok')
+}catch(e){
+  console.log('>> db err: ' + e)
+}
 
 
 
-module.exports = sequelize
+module.exports = sequelize        
