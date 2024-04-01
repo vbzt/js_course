@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
+::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background-color: var(--colorido);
+}
+
+::-webkit-scrollbar {
+  height: 90%;
+  width: 6px;
+  background-color: transparent;
+}
 
 * {
   border: none;
@@ -20,7 +30,7 @@
 
 :root {
   --corTexto: #e4e4e4;
-  --corCinza: #8d8d8d;
+  --corCinza: #6b6b6b;
   --corFundo: #272e53;
   --colorido: #111;
 }
@@ -41,6 +51,7 @@ nav ul{
 }
 
 nav ul li{
+  list-style: none;
   font-size: 1.8cqh;
 }
 
@@ -53,6 +64,14 @@ main {
   align-items: center;
   flex-direction: column;
   gap: 5%;
+}
+
+h1{
+  font-size: 2.6cqh; 
+}
+
+h2{
+  font-size: 2.2cqh;
 }
 
 form{
@@ -116,7 +135,7 @@ form{
   justify-content: space-between;
   padding: 1cqh 0;
   color: var(--corTexto);
-  border-bottom: 1px solid var(--corTexto);
+  border-bottom: 1px solid var(--corCinza);
 }
 
 .taskList .title{
@@ -124,11 +143,11 @@ form{
   font-size: 2cqh;
 }
 
-.taskList li:hover {
+.taskList .title.done{
   color: var(--corCinza);
-  border-bottom: 1px solid var(--corCinza);
-  font-size: 2cqh;
+  text-decoration: line-through;
 }
+
 
 .taskList .actions{
   display: flex;
@@ -143,4 +162,15 @@ form{
 .taskList button{
   background-color: transparent;
   cursor: pointer;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .taskList{
+    width: max-content;
+  }
+
+  form{
+    width: 70%;
+  }
 }

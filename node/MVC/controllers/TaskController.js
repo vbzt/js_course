@@ -53,8 +53,8 @@ module.exports = class TaskController{
 
   static async toggleTaskStatus(req, res){
     const id = req.body.id
-
-    const task = { done: req.body.done == 0 ? true : false}
+    const done = req.body.done
+    const task = { done: done == 0 ? true : false}
 
     await Task.update(task, {where: {id}})
 
