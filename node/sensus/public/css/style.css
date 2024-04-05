@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--colorido);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background-color: var(--corFundo);
+}
+
+* {
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  font-style: normal;
+  font-family: "Rubik";
+  margin: 0;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  resize: none;
+  outline: none;
+  border: 0;
+  color: var(--corTexto);
+  scroll-behavior: smooth;
+}
+
+:root {
+  --corTexto: #e3e3e3;
+  --corFundo: #111;
+  --colorido: #5e8ec5;
+}
+
+nav, footer{
+  min-width: max-content;
+  height: 7%;
+  background-color: var(--corFundo);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  
+}
+
+nav ul{
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  gap: 1cqh;
+  padding: 0;
+}
+
+.nav-footer{
+  padding: 0;
+}
+
+main{
+  width: 100%;
+  height: 93%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2cqh;
+  background-color: var(--corFundo);
+}
+
+/* auth */ 
+
+form{
+  display: flex;
+  gap: 1.5cqh;
+  flex-direction: column;
+  width: 35%;
+
+}
+fieldset{
+  padding: 0 1cqh;
+  border: 2px solid var(--colorido);
+  border-radius: 7px;
+}
+
+fieldset legend{
+  padding: 0 1cqh;
+}
+
+fieldset input{
+  background-color: transparent;
+  padding: 1cqh;
+  font-size: 1rem;
+}
+
+.colored{
+  color: var(--colorido);
+}

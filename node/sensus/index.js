@@ -8,6 +8,14 @@ const app = express()
 
 const conn = require('./db/conn')
 
+const Post = require('./models/Post')
+const User = require('./models/Post')
+
+const postRoutes = require('./routes/postRoutes')
+const authRoutes = require('./routes/authRoutes')
+
+const PostController = require('./controllers/PostController')
+const AuthController = require('./controllers/AuthController')
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
 
@@ -43,6 +51,13 @@ app.use((req, res, next) => {
   
   next()
 })
+
+// Routes
+
+app.use('/posts', postRoutes)
+app.use('/', authRoutes)
+
+app.get('/', PostController.showPosts)
 
 conn.sync()
 .then(() => {
