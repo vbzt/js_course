@@ -13,11 +13,26 @@
     <div class=""></div>
     <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
+        {{#if session.userid}}
+          <li><a href="/login">Profile</a></li>
+          <li><a href="/register">Logout</a></li>
+
+          {{else}}
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+        {{/if }}
+        
       </ul>
   </nav>
   <main>
+    {{#if messages.message}} 
+      {{#if error}}
+        <span class="flashError">{{messages.message}}</span>
+
+        {{else}}
+        <span class="flashSucces">{{messages.message}}</span>
+      {{/if}}
+    {{/if}}
     {{{ body }}}
   </main>
   <footer>

@@ -32,16 +32,18 @@
   --corTexto: #e3e3e3;
   --corFundo: #111;
   --colorido: #5e8ec5;
+  --corCinza: #333;
+  --corError: #c55e5e;
 }
 
+ 
 nav, footer{
-  min-width: max-content;
   height: 7%;
   background-color: var(--corFundo);
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  
+  font-size: 1.8cqh;
 }
 
 nav ul{
@@ -68,31 +70,81 @@ main{
   background-color: var(--corFundo);
 }
 
+main h1{
+  color: var(--colorido);
+}
+
 /* auth */ 
 
 form{
   display: flex;
+  align-items: center;
   gap: 1.5cqh;
   flex-direction: column;
-  width: 35%;
-
+  width: 100%;
 }
-fieldset{
+
+form .form-control{
+  width: 40%;
+}
+
+fieldset {
   padding: 0 1cqh;
-  border: 2px solid var(--colorido);
+  border: 2px solid var(--corCinza);
   border-radius: 7px;
+  transition: border-color all 0.3s ease-in-out
 }
 
-fieldset legend{
+fieldset legend {
   padding: 0 1cqh;
 }
 
-fieldset input{
+fieldset input {
   background-color: transparent;
   padding: 1cqh;
+  width: 100%;
   font-size: 1rem;
 }
 
+fieldset:focus-within {
+  border-color: var(--colorido);
+}
+
+
+form .form-control button{
+  width: 100%;
+  padding: 1.4cqh;
+  border: 2px solid var(--corCinza);
+  border-radius: 7px;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 1.6cqh;
+  cursor: pointer;
+}
+
+form .form-control button:hover{
+  border-color: var(--corTexto);
+  background-color: var(--corTexto);
+  color: var(--corFundo);
+}
+
+.flashError{ 
+  color: var(--corError);
+  font-weight: 400;
+}
+
+.flashSucces{ 
+  color: var(--colorido);
+  font-weight: 400;
+}
+
+
 .colored{
   color: var(--colorido);
+}
+
+@media screen and (max-width: 500px) {
+  nav, footer{
+    font-size: 3cqw;
+  }
 }
