@@ -34,6 +34,7 @@
   --colorido: #5e8ec5;
   --corCinza: #333;
   --corError: #c55e5e;
+  --corSucesso: #5e8e76;
 }
 
  
@@ -46,6 +47,8 @@ nav, footer{
   font-size: 1.8cqh;
 }
 
+
+
 nav ul{
   display: flex;
   list-style: none;
@@ -54,6 +57,7 @@ nav ul{
   gap: 1cqh;
   padding: 0;
 }
+
 
 .nav-footer{
   padding: 0;
@@ -99,17 +103,34 @@ fieldset legend {
   padding: 0 1cqh;
 }
 
-fieldset input {
+fieldset input, textarea{
   background-color: transparent;
   padding: 1cqh;
   width: 100%;
   font-size: 1rem;
 }
 
+
 fieldset:focus-within {
   border-color: var(--colorido);
 }
 
+.postField{
+  padding: 1cqh 0.5cqh;
+  max-width: 100%; 
+  max-height: 720px; 
+  border: 2px solid var(--corCinza);
+  border-radius: 7px;
+  transition: border-color all 0.3s ease-in-out;
+}
+
+.postField textarea{
+  min-height: 24px; 
+  max-height: 720px;
+  resize: none;
+  overflow-y: scroll;
+
+  }
 
 form .form-control button{
   width: 100%;
@@ -128,13 +149,16 @@ form .form-control button:hover{
   color: var(--corFundo);
 }
 
-.flashError{ 
+.form-error{
+  padding: 1cqh 0;
+}
+
+.flashError, .flashError i{ 
   color: var(--corError);
-  font-weight: 400;
 }
 
 .flashSucces{ 
-  color: var(--colorido);
+  color: var(--corSucesso);
   font-weight: 400;
 }
 
@@ -143,8 +167,29 @@ form .form-control button:hover{
   color: var(--colorido);
 }
 
-@media screen and (max-width: 500px) {
+.profile{
+  width: 80%;
+  height: 80% ;
+}
+
+.profile button{
+  padding: 2cqh;
+}
+
+@media screen and (max-width: 1000px) {
   nav, footer{
-    font-size: 3cqw;
+    font-size: 1.5cqh;
+  }
+
+  form .form-control{
+    width: 80%;
+  }
+
+  fieldset, form .form-control button{
+    border: 1px solid var(--corCinza);
+  }
+
+  .flashError, legend, fieldset input, .form-control span{
+    font-size: 2cqh
   }
 }

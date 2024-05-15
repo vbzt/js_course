@@ -14,8 +14,8 @@
     <ul>
         <li><a href="/">Home</a></li>
         {{#if session.userid}}
-          <li><a href="/login">Profile</a></li>
-          <li><a href="/register">Logout</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/logout">Logout</a></li>
 
           {{else}}
           <li><a href="/login">Login</a></li>
@@ -25,14 +25,7 @@
       </ul>
   </nav>
   <main>
-    {{#if messages.message}} 
-      {{#if error}}
-        <span class="flashError">{{messages.message}}</span>
-
-        {{else}}
-        <span class="flashSucces">{{messages.message}}</span>
-      {{/if}}
-    {{/if}}
+    
     {{{ body }}}
   </main>
   <footer>
@@ -40,8 +33,15 @@
     <nav class = 'nav-footer'>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
+        {{#if session.userid}}
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/logout">Logout</a></li>
+
+          {{else}}
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+        {{/if }}
+        
       </ul>
     </nav>
     <p>Sensus &copy 2024</p>

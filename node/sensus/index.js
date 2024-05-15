@@ -53,11 +53,18 @@ app.use((req, res, next) => {
 })
 
 // Routes
-
+app.use('/', postRoutes)
 app.use('/posts', postRoutes)
 app.use('/', authRoutes)
 
 app.get('/', PostController.showPosts)
+
+function resizeTextarea() {
+  var textarea = document.getElementById("myTextarea");
+  textarea.style.height = "auto"; // Redefine a altura para auto para recalcular a altura necessária
+  textarea.style.height = textarea.scrollHeight + "px"; // Define a altura conforme o conteúdo
+}
+
 
 conn.sync()
 .then(() => {
