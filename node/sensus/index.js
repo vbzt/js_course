@@ -59,14 +59,9 @@ app.use('/', authRoutes)
 
 app.get('/', PostController.showPosts)
 
-function resizeTextarea() {
-  var textarea = document.getElementById("myTextarea");
-  textarea.style.height = "auto"; // Redefine a altura para auto para recalcular a altura necessária
-  textarea.style.height = textarea.scrollHeight + "px"; // Define a altura conforme o conteúdo
-}
-
-
-conn.sync()
+conn
+.sync()
+//.sync({force: true})
 .then(() => {
   app.listen(3002, () => console.log('>> server on'))
 })

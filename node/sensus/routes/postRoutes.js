@@ -7,4 +7,6 @@ router.get('/profile', checkAuth, PostController.profile)
 router.get('/create', checkAuth, PostController.createPost)
 router.get('/', PostController.showPosts);
 
+router.post('/create', checkAuth, PostController.registerPost)
+
 module.exports = router;

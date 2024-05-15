@@ -1,9 +1,8 @@
 {{#if messages.message}} 
-      {{#if error}}
-        <span class="flashError">{{messages.message}}</span>
-
-        {{else}}
-        <span class="flashSucces">{{messages.message}}</span>
-      {{/if}}
+    {{#if error}}
+      <span class="flashError">{{messages.message}}</span>
+      {{else}}
+      <span class="flashSucces">{{messages.message}}</span>
     {{/if}}
+{{/if}}
 <h1>Mostrando posts</h1>
