@@ -18,7 +18,7 @@
   font-style: normal;
   font-family: "Rubik";
   margin: 0;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
   text-decoration: none;
   letter-spacing: 0.5px;
   resize: none;
@@ -167,62 +167,66 @@ form .form-control button:hover{
   color: var(--colorido);
 }
 
-.profile{
+
+.post-dash {
+  width: 90%;
+}
+
+.post-dash li {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 7vh;
   width: 100%;
-  height: 100%;
-  gap: 2cqh;
+  padding: 1vh 0;
+  border-bottom: 1px solid var(--colorido);
 }
 
-.profile .title-container, .profile .posts{
+.post-dash li .post-title {
   width: 70%;
+  word-wrap: break-word;
 }
 
-.profile button{
-  width: 100%;
-  padding: 1.4cqh;
-  border: 2px solid var(--corCinza);
-  border-radius: 7px;
-  background-color: transparent;
-  font-weight: 600;
-  font-size: 1.6cqh;
+.post-dash li .post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 25%;
+}
+
+.post-dash li .post-actions a, .post-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7vh;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.post-dash li .post-actions a:hover, .post-form:hover {
+  background-color: #ffffff19;
   cursor: pointer;
 }
 
-.profile button:hover{
-  border-color: var(--corTexto);
-  background-color: var(--corTexto);
-  color: var(--corFundo);
+.post-dash li .post-actions a:hover {
+  color: var(--prlp);
 }
 
-.profile .posts{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  gap: 2cqh;
+.post-dash li .post-actions .post-form:hover button {
+  color: rgb(236, 60, 60);
 }
 
-.profile .post-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2px solid var(--colorido);
-  border-radius: 7px;
-  padding: 2cqw;
-  gap: 2cqh;
+.post-dash li .post-actions .post-form button {
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
+  background-color: transparent;
+  cursor: pointer;
 }
-
-.profile .post-container h3{
-  font-size: 1.4cqw;
-}
-
-.profile .post-container p{
-  font-size: 1cqw;
-}
-
 @media screen and (max-width: 1000px) {
   nav, footer{
     font-size: 1.5cqh;
@@ -240,3 +244,6 @@ form .form-control button:hover{
     font-size: 2cqh
   }
 }
+
+
+

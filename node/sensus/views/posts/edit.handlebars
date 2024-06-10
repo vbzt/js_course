@@ -1,0 +1,15 @@
+
+  <a href="/profile">Voltar</a>
+  <h1>Edit post</h1>
+  <form action="/edit" method="post">
+  <input type="hidden" name="id" value = '{{post.id}}'>
+    <div class="form-control">
+      <fieldset class = 'postField'>
+        <textarea wrap="hard" name="post" id="" placeholder="What are you thinking right now?" cols="30" rows="3">{{post.title}}</textarea>
+      </fieldset>
+    </div>
+    <div class="form-control">
+      <button button type="submit">Edit</button>
+    </div>
+
+  </form>

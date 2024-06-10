@@ -5,20 +5,24 @@
       <span class="flashSucces">{{messages.message}}</span>
     {{/if}}
 {{/if}}
-<div class="profile">
-    <div class="title-container">
-        <h2>Profile</h2>
-        <a href="/create"><button>Post</button></a>
-    </div>
-        
-            <div class="posts">
-                <h3>Your posts</h3>
-            {{#each posts}}
-                <div class="post-container">
-                    <h3>{{this.title}}</h3>
-                    <footer><p>{{this.createdAt}}</p></footer>
-                </div>  
-        {{/each}}
-        </div>
-    </div>
-</div>
+<title>se7en dashboard</title>
+<h1 class="title">Profile</h1>
+<a class="btn" href="/posts/create">Make a new post</a>
+<h2 class="title colored">Your posts</h2>
+<ul class="post-dash">
+  {{#each posts}}
+    <li>
+      <span class="post-title">{{this.title}}</span>
+      <span class="post-actions">
+        <a href="/edit/{{this.id}}">Edit</a>
+        <form class="post-form" action="/posts/remove" method="POST">
+          <input type="hidden" name="id" value="{{this.id}}">
+          <button>Delete</button>
+        </form>
+      </span>
+    </li>
+  {{/each}}
+</ul>
+{{#if emptyPosts}}
+  <p class="desc">You haven't posted anything yet.</p>
+{{/if}}
