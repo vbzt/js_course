@@ -1,9 +1,19 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
+const moment = require('moment');
 
 class PostController {
   static async showPosts(req, res) {
-    res.render('posts/home');
+    const postsData = await Post.findAll({
+      include: User
+    })
+
+    const posts = postsData.map(result => {
+      let post = result.get({ plain: true });
+      post.createdAt = formatTimeAgo(post.createdAt);
+      return post;
+    });
+    res.render('posts/home', {posts});
   }
 
   static async profile(req, res){ 
@@ -93,7 +103,27 @@ class PostController {
         })
         .catch((err) => console.log(`>> update error: ${err}`));
 }
+}
 
+function formatTimeAgo(createdAt) {
+  const createdDate = moment(createdAt);
+  const now = moment();
+  
+  const seconds = now.diff(createdDate, 'seconds')
+  const diffMinutes = now.diff(createdDate, 'minutes');
+  const diffHours = now.diff(createdDate, 'hours');
+  const diffDays = now.diff(createdDate, 'days');
+ if(diffMinutes == 0){
+  return `${seconds}s ago`;
+ }
+ if (diffMinutes < 60) {
+    return `${diffMinutes} minutes ago`;
+  } 
+  if (diffHours < 24) {
+    return `${diffHours} hours ago`;
+  }else{
+    return `${diffDays} days ago`;
+  }
 }
 
 module.exports = PostController;

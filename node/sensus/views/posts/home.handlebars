@@ -5,4 +5,36 @@
       <span class="flashSucces">{{messages.message}}</span>
     {{/if}}
 {{/if}}
-<h1>Mostrando posts</h1>
+<form class="form" action="/" method="GET">
+  <fieldset>
+        <legend>Search</legend>
+        <textarea name="search" placeholder="Looking for something?" required maxlength="255"></textarea>
+    </fieldset>
+    <button class = 'src'><i class="fas fa-search"></i></button>
+</form>
+<div class="row">
+  <p class="desc">Order by:</p>
+  <form action="/" method="GET">
+    <input type="hidden" name="search" value="{{this.search}}">
+    <input type="hidden" name="order" value="new">
+    <button><i class="fa-solid fa-arrow-up"></i> Newest posts</button>
+  </form>
+  <form action="/" method="GET">
+    <input type="hidden" name="search" value="{{this.search}}">
+    <input type="hidden" name="order" value="old">
+    <button><i class="fa-solid fa-arrow-down"></i> Oldest posts</button>
+  </form>
+  <a href="/">Clear filters</a>
+</div>
+<h3 class = 'colored'>Check what others are thinking!</h3>
+<ul class="post-home">
+  {{#each posts}}
+    <li>
+      <p class="home-title">{{this.title}}</p>
+      <div class="home-row">
+        <p class="home-owner">by <span class="colorful">{{this.User.username}}</span></p>
+        <p class="home-date"><span class="colorful">{{this.createdAt}}</span></p>
+      </div>
+    </li>
+  {{/each}}
+</ul>
